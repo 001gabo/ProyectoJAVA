@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectojava;
 
 /**
  *
@@ -94,9 +93,7 @@ public class crud_libros extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchActionPerformed
-       this.setVisible(false); 
-       form_pivote formp =new form_pivote();
-       formp.setVisible(true);
+      new form_add().setVisible(true);
     }//GEN-LAST:event_btn_searchActionPerformed
 
     /**

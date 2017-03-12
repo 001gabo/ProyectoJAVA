@@ -3,18 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectojava;
 
 /**
  *
  * @author roberto
  */
-public class form_pivote extends javax.swing.JFrame {
+public class form_add extends javax.swing.JFrame {
 
     /**
-     * Creates new form form_pivote
+     * Creates new form pivote2
      */
-    public form_pivote() {
+    public form_add() {
         initComponents();
     }
 
@@ -27,36 +26,53 @@ public class form_pivote extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel10 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
         jTextField9 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
         jTextField11 = new javax.swing.JTextField();
-
-        jLabel10.setText("codigo");
-        jLabel10.setName("in_anio"); // NOI18N
-
-        jTextField10.setName("in_editorial"); // NOI18N
+        jLabel5 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTextField3.setName("in_descripción"); // NOI18N
+
+        jTextField8.setName("in_editorial"); // NOI18N
+
+        jLabel3.setText("Descripción");
+
+        jLabel9.setText("codigo");
+        jLabel9.setName("in_anio"); // NOI18N
+
+        jTextField4.setName("in_cantidad"); // NOI18N
+
+        jTextField9.setName("in_codigo"); // NOI18N
+
+        jLabel4.setText("cantidad");
+
+        jLabel11.setText("Observación");
+        jLabel11.setName("in_anio"); // NOI18N
+
+        jTextField5.setName("in_autor"); // NOI18N
+
+        jTextField11.setName("in_observacion"); // NOI18N
+
+        jLabel5.setText("Autor");
 
         jButton1.setText("Aceptar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -65,50 +81,26 @@ public class form_pivote extends javax.swing.JFrame {
             }
         });
 
+        jTextField6.setName("in_edicion"); // NOI18N
+
         jTextField1.setName("in_id"); // NOI18N
+
+        jLabel6.setText("Edición");
 
         jLabel1.setText("Identificador");
         jLabel1.setName("lb_id"); // NOI18N
 
+        jTextField7.setName("in_editorial"); // NOI18N
+
         jTextField2.setName("in_namelib"); // NOI18N
+
+        jLabel7.setText("Editorial");
 
         jLabel2.setText("Nombre de libro");
         jLabel2.setToolTipText("");
 
-        jTextField3.setName("in_descripción"); // NOI18N
-
-        jLabel3.setText("Descripción");
-
-        jTextField4.setName("in_cantidad"); // NOI18N
-
-        jLabel4.setText("cantidad");
-
-        jTextField5.setName("in_autor"); // NOI18N
-
-        jLabel5.setText("Autor");
-
-        jTextField6.setName("in_edicion"); // NOI18N
-
-        jLabel6.setText("Edición");
-
-        jTextField7.setName("in_editorial"); // NOI18N
-
-        jLabel7.setText("Editorial");
-
         jLabel8.setText("Año ");
         jLabel8.setName("in_anio"); // NOI18N
-
-        jTextField8.setName("in_editorial"); // NOI18N
-
-        jLabel9.setText("codigo");
-        jLabel9.setName("in_anio"); // NOI18N
-
-        jTextField9.setName("in_codigo"); // NOI18N
-
-        jLabel11.setText("Observación");
-        jLabel11.setName("in_anio"); // NOI18N
-
-        jTextField11.setName("in_observacion"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,7 +139,7 @@ public class form_pivote extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(96, 96, 96)
                         .addComponent(jButton1)))
-                .addGap(0, 46, Short.MAX_VALUE))
+                .addGap(0, 33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,7 +184,7 @@ public class form_pivote extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -201,9 +193,8 @@ public class form_pivote extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-  
-         
-// TODO add your handling code here:
+
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -223,20 +214,21 @@ public class form_pivote extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(form_pivote.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(form_add.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(form_pivote.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(form_add.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(form_pivote.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(form_add.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(form_pivote.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(form_add.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new form_pivote().setVisible(true);
+                new form_add().setVisible(true);
             }
         });
     }
@@ -244,7 +236,6 @@ public class form_pivote extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -255,7 +246,6 @@ public class form_pivote extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
