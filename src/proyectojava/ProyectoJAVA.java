@@ -17,6 +17,7 @@ import javax.swing.UIManager;
 public class ProyectoJAVA extends JFrame { 
     
     public ProyectoJAVA() {
+        //con esto se va de una pantalla a otra
         this.setVisible(false);
         new Login().setVisible(true);
     } 
