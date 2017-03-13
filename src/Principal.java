@@ -100,15 +100,15 @@ public class Principal extends javax.swing.JFrame {
         jLabel2.setText("Libros");
         jLabel2.setToolTipText("");
 
-        jButton5.setText("jButton1");
+        jButton5.setText("Agregar libro");
 
-        jButton6.setText("jButton1");
+        jButton6.setText("Editar libro");
 
-        jButton7.setText("jButton1");
+        jButton7.setText("Renovacion");
 
-        jButton8.setText("jButton1");
+        jButton8.setText("Devolucion");
 
-        jButton9.setText("jButton1");
+        jButton9.setText("Prestamo");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -164,10 +164,10 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(507, 244));
+        setSize(new java.awt.Dimension(507, 278));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
