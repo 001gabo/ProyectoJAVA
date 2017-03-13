@@ -117,9 +117,8 @@ public class Login extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this,"Usuario o contraseña incorrecto.");
                 }
                 con.close();
-            }catch(SQLException ex){
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE,null,ex);
-                JOptionPane.showMessageDialog(this,"Ocurrio un error: "); 
+            }catch(SQLException ex){ 
+                JOptionPane.showMessageDialog(this,"Ocurrio un error: "+ex); 
             } 
         }
     }//GEN-LAST:event_btnIniciarActionPerformed
