@@ -40,14 +40,11 @@ public class crud_libros extends javax.swing.JFrame {
    modelo.addColumn("Edición");
    modelo.addColumn("Editorial");
    jtregistros.setModel(modelo);
-   String sql="";
-  if(palabra.equals("")){ sql="select id_lib, lib_descrip, lib_name, lib_cantidad, lib_categoria, lib_autor, lib_edicion,lib_editorial  from libros";}
-  else{ sql="select id_lib, lib_descrip, lib_name, lib_cantidad, lib_categoria, lib_autor, lib_edicion,lib_editorial  from libros where id_lib  LIKE '%"+palabra+"%' or lib_name LIKE '%"+palabra+"%'";} 
-   
+ 
    String []array = new String[8];
    con=conexion_mysql.getConnection();
    Statement s= con.createStatement();
-   rs=s.executeQuery(sql);
+   rs=s.executeQuery("select id_lib, lib_descrip, lib_name, lib_cantidad, lib_categoria, lib_autor, lib_edicion,lib_editorial  from libros");
         while (rs.next())
         { 
         array[0]=rs.getString(1);
