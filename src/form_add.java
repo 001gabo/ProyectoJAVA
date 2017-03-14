@@ -15,6 +15,7 @@ public class form_add extends javax.swing.JFrame {
      */
     public form_add() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
