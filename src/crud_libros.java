@@ -83,6 +83,7 @@ public class crud_libros extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
         btn_add = new javax.swing.JButton();
         btn_delete = new javax.swing.JButton();
         btn_update = new javax.swing.JButton();
@@ -90,6 +91,8 @@ public class crud_libros extends javax.swing.JFrame {
         in_search = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtregistros = new javax.swing.JTable();
+
+        jPopupMenu1.setName("Modificar"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -119,6 +122,7 @@ public class crud_libros extends javax.swing.JFrame {
 
             }
         ));
+        jtregistros.setComponentPopupMenu(jPopupMenu1);
         jScrollPane1.setViewportView(jtregistros);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -230,6 +234,7 @@ public class crud_libros extends javax.swing.JFrame {
     private javax.swing.JButton btn_search;
     private javax.swing.JButton btn_update;
     private javax.swing.JTextField in_search;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtregistros;
     // End of variables declaration//GEN-END:variables
