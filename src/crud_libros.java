@@ -23,12 +23,12 @@ public class crud_libros extends javax.swing.JFrame {
    
    public crud_libros() {
         initComponents();
-        mostrar();
+        mostrar("");
      
          setLocationRelativeTo(null);
     }
 
-   private void mostrar(){
+   private void mostrar(String palabra){
    try{     
    DefaultTableModel modelo= new DefaultTableModel();   
    modelo.addColumn("id");
@@ -40,15 +40,16 @@ public class crud_libros extends javax.swing.JFrame {
    modelo.addColumn("Edición");
    modelo.addColumn("Editorial");
    jtregistros.setModel(modelo);
+   String sql="";
+  if(palabra.equals("")){ sql="select id_lib, lib_descrip, lib_name, lib_cantidad, lib_categoria, lib_autor, lib_edicion,lib_editorial  from libros limit 5";}
+  else{ sql="select id_lib, lib_descrip, lib_name, lib_cantidad, lib_categoria, lib_autor, lib_edicion,lib_editorial  from where id_lib  LIKE '%"+palabra+"%' or lib_nameLIKE '%"+palabra+"%'";} 
    
    String []array = new String[8];
-       
    con=conexion_mysql.getConnection();
    Statement s= con.createStatement();
-   rs=s.executeQuery("select id_lib, lib_descrip, lib_name, lib_cantidad, lib_categoria, lib_autor, lib_edicion,lib_editorial  from libros");
+   rs=s.executeQuery(sql);
         while (rs.next())
-        {
-            
+        { 
         array[0]=rs.getString(1);
         array[1]=rs.getString(2);
         array[2]=rs.getString(3);
@@ -124,7 +125,7 @@ public class crud_libros extends javax.swing.JFrame {
                 .addComponent(in_search, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_search)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_add, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -135,8 +136,8 @@ public class crud_libros extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,8 +156,8 @@ public class crud_libros extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_update, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(456, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(221, Short.MAX_VALUE))
         );
 
         pack();
@@ -164,7 +165,7 @@ public class crud_libros extends javax.swing.JFrame {
 
     private void btn_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchActionPerformed
     
-   
+   mostrar(in_search.getText());
     }//GEN-LAST:event_btn_searchActionPerformed
 
     
