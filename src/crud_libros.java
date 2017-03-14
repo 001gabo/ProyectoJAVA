@@ -41,7 +41,7 @@ public class crud_libros extends javax.swing.JFrame {
    modelo.addColumn("Editorial");
    jtregistros.setModel(modelo);
    
-   String []array = new String[7];
+   String []array = new String[8];
        
    con=conexion_mysql.getConnection();
    Statement s= con.createStatement();
@@ -56,7 +56,7 @@ public class crud_libros extends javax.swing.JFrame {
         array[4]=rs.getString(5);
         array[5]=rs.getString(6);
         array[6]=rs.getString(7);
-        
+        array[7]=rs.getString(8);
         modelo.addRow(array);
         }
         jtregistros.setModel(modelo);
