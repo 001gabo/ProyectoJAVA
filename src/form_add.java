@@ -22,10 +22,13 @@ public class form_add extends javax.swing.JFrame {
     
   JComboBox combo_categoria; 
   JComboBox combo_author;
-   JComboBox combo_editorial;
+  JComboBox combo_editorial;
+  JComboBox combo_estados;
   Connection con;
   PreparedStatement pst;//query
   ResultSet rs=null;//rsultado
+  Statement s;
+ 
   
   
   
@@ -69,6 +72,9 @@ public class form_add extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         in_categoria = new javax.swing.JTextField();
         btn_categorianew = new javax.swing.JButton();
+        in_estado = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        btn_estado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -155,10 +161,22 @@ public class form_add extends javax.swing.JFrame {
             }
         });
 
+        in_estado.setName("in_observacion"); // NOI18N
+
+        jLabel12.setText("Estado");
+        jLabel12.setName("in_anio"); // NOI18N
+
+        btn_estado.setText("new");
+        btn_estado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_estadoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -174,11 +192,16 @@ public class form_add extends javax.swing.JFrame {
                             .addComponent(jLabel9)
                             .addComponent(jLabel11)
                             .addComponent(jLabel10)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel12))
                         .addGap(83, 83, 83)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(in_observacion, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(in_cod, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(in_estado, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                                .addComponent(btn_estado, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(in_desc, javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,9 +220,10 @@ public class form_add extends javax.swing.JFrame {
                                 .addComponent(in_id, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
                                 .addComponent(in_name, javax.swing.GroupLayout.Alignment.LEADING))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(jButton1)))
-                .addGap(0, 16, Short.MAX_VALUE))
+                        .addGap(128, 128, 128)
+                        .addComponent(jButton1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,9 +276,14 @@ public class form_add extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(in_observacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12)
+                    .addComponent(in_estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_estado))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(18, 18, 18))
+                .addContainerGap())
         );
 
         pack();
@@ -265,16 +294,25 @@ public class form_add extends javax.swing.JFrame {
         in_categoria.setVisible(false);   
         in_author.setVisible(false);
         in_editorial.setVisible(false);
+        in_estado.setVisible(false);
+        
+        combo_author=new JComboBox();
+        combo_author.removeAllItems(); 
+        combo_categoria=new JComboBox();
+        combo_categoria.removeAllItems();
+        combo_editorial=new JComboBox();
+        combo_editorial.removeAllItems(); 
+        combo_estados=new JComboBox();
+        combo_estados.removeAllItems(); 
 
-   //     JOptionPane.showMessageDialog(null,in_editorial.getLocation());   
+     //  JOptionPane.showMessageDialog(null,in_estado.getLocation());   
         try{
             
             
 //      combo_box Categoria     
-           combo_categoria=new JComboBox();
-           combo_categoria.removeAllItems(); 
+            
            con=conexion_mysql.getConnection();
-           Statement s= con.createStatement();         
+           s= con.createStatement();         
            rs=s.executeQuery("select cat_categorias from categoria");
            while(rs.next())
             { 
@@ -285,36 +323,35 @@ public class form_add extends javax.swing.JFrame {
           combo_categoria.setBounds(222, 139, 100, 25);
        
  //        combo_box Autor
-       
-           combo_author=new JComboBox();
-           combo_author.removeAllItems(); 
-        
-           String sql="select aut_name,aut_lastname from autor";
-           con=conexion_mysql.getConnection();
-           s= con.createStatement();         
-           rs=s.executeQuery(sql);
+          
+           rs=s.executeQuery("select aut_name,aut_lastname from autor");
            while(rs.next())
             { 
             this.combo_author.addItem(rs.getString(1)+" "+rs.getString(2));
             getContentPane().add(combo_author); 
+            
             }
            combo_author.setBounds(222, 213, 100, 25);
+           
 //       Combo_box editorial
-           
-           
-           combo_editorial=new JComboBox();
-           combo_editorial.removeAllItems(); 
-           con=conexion_mysql.getConnection();
-           s= con.createStatement();         
+                  
            rs=s.executeQuery("select ed_name from editoriales");
            while(rs.next())
             { 
             this.combo_editorial.addItem(rs.getString(1));
             getContentPane().add(combo_editorial); 
             }
-       
-          combo_editorial.setBounds(222, 293, 100, 25);
-       
+            combo_editorial.setBounds(222, 293, 100, 25);
+          
+ //        combo_box estados
+          
+           rs=s.executeQuery("select es_estados from estados");
+           while(rs.next())
+            { 
+            this.combo_estados.addItem(rs.getString(1));
+            getContentPane().add(combo_estados); 
+            }
+           combo_estados.setBounds(222, 444, 100, 25);
        con.close();
         }
         catch(Exception ex){
@@ -322,8 +359,42 @@ public class form_add extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,("error"+ex));
         }
     }
+        
+        
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try{
+          con=conexion_mysql.getConnection();
+          s= con.createStatement();
+          
+          //          encontrando el id de la tabla categora 
+          int id_categoria=0;
+          rs=s.executeQuery("select id_categoria from categoria where cat_categorias='"+(combo_categoria.getSelectedItem().toString())+"'");
+          while(rs.next())
+            { 
+            id_categoria=rs.getInt(1);
+            }
+          
 
+     //          encontrando el id de la tabla autor 
+          String pivote=combo_author.getSelectedItem().toString();
+          int valor=pivote.indexOf(" "); 
+          String nombre=pivote.substring(0,valor); 
+          String id_autor="";
+          rs=s.executeQuery("select id_autor from autor where aut_name='"+nombre+"'");
+          while(rs.next())
+            { 
+            id_autor=rs.getString(1);
+            }
+          
+                JOptionPane.showMessageDialog(null,id_autor);
+        //rs=s.executeQuery("select id_categoria from categoria where cat_categoria'"++"'"); 
+        //        pst=con.prepareStatement("insert into libros(id_lib, lib_descrip, lib_name, lib_cantidad, lib_categoria, lib_autor, lib_edicion,lib_editorial,lib_year,lib_observacion) values()");
+        //        
+        }
+        catch(Exception ex){
+            
+            JOptionPane.showMessageDialog(null,("error"+ex));
+        }
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -348,6 +419,12 @@ public class form_add extends javax.swing.JFrame {
       combo_editorial.setVisible(false);
       btn_editorial.setVisible(false);
     }//GEN-LAST:event_btn_editorialActionPerformed
+
+    private void btn_estadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_estadoActionPerformed
+       in_estado.setVisible(true);
+      combo_estados.setVisible(false);
+      btn_estado.setVisible(false);
+    }//GEN-LAST:event_btn_estadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -389,6 +466,7 @@ public class form_add extends javax.swing.JFrame {
     private javax.swing.JButton btn_author;
     private javax.swing.JButton btn_categorianew;
     private javax.swing.JButton btn_editorial;
+    private javax.swing.JButton btn_estado;
     private javax.swing.JTextField in_anio;
     private javax.swing.JTextField in_author;
     private javax.swing.JTextField in_cantidad;
@@ -397,6 +475,7 @@ public class form_add extends javax.swing.JFrame {
     private javax.swing.JTextField in_desc;
     private javax.swing.JTextField in_edicion;
     private javax.swing.JTextField in_editorial;
+    private javax.swing.JTextField in_estado;
     private javax.swing.JTextField in_id;
     private javax.swing.JTextField in_name;
     private javax.swing.JTextField in_observacion;
@@ -404,6 +483,7 @@ public class form_add extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
