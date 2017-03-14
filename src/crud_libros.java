@@ -53,7 +53,7 @@ public class crud_libros extends javax.swing.JFrame {
    con=conexion_mysql.getConnection();
    Statement s= con.createStatement();
    rs=s.executeQuery(sql);
-        while (rs.next())
+        while(rs.next())
         { 
         array[0]=rs.getString(1);
         array[1]=rs.getString(2);
