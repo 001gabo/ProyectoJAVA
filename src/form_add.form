@@ -28,7 +28,6 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -47,7 +46,7 @@
                           <Component id="in_cod" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="in_estado" min="-2" pref="92" max="-2" attributes="0"/>
-                              <EmptySpace pref="18" max="32767" attributes="0"/>
+                              <EmptySpace pref="26" max="32767" attributes="0"/>
                               <Component id="btn_estado" min="-2" pref="53" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -60,17 +59,14 @@
                                   <Component id="in_anio" alignment="0" pref="92" max="32767" attributes="0"/>
                                   <Component id="in_categoria" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="btn_author" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btn_categorianew" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btn_editorial" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btn_categorianew" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_author" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_editorial" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="in_id" alignment="0" pref="95" max="32767" attributes="0"/>
-                              <Component id="in_name" alignment="0" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="in_name" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
@@ -86,12 +82,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="in_id" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="in_name" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -230,20 +221,9 @@
         <Property name="name" type="java.lang.String" value="in_edicion" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="in_id">
-      <Properties>
-        <Property name="name" type="java.lang.String" value="in_id" noResource="true"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
         <Property name="text" type="java.lang.String" value="Edici&#xf3;n"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Identificador"/>
-        <Property name="name" type="java.lang.String" value="lb_id" noResource="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="in_editorial">
