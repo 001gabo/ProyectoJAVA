@@ -1,4 +1,5 @@
 
+import java.awt.Image;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.*;
@@ -28,6 +29,9 @@ public class crud_libros extends javax.swing.JFrame {
 
    private void mostrar(String palabra){
    try{     
+   
+//   ImageIcon icono=new ImageIcon(getClass().getResource("icon/add.png"));
+//   btn_add.setIcon(icono);
    DefaultTableModel modelo= new DefaultTableModel();   
    modelo.addColumn("id");
    modelo.addColumn("nombre");
@@ -94,17 +98,23 @@ public class crud_libros extends javax.swing.JFrame {
         jPopupMenu1.add(jMenu1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btn_add.setIcon(new javax.swing.ImageIcon("C:\\Users\\roberto\\Documents\\ciclo ix\\java\\Poyecto\\ProyectoJAVA\\build\\classes\\icon\\add.png")); // NOI18N
         btn_add.setText("Agregar");
         btn_add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_addActionPerformed(evt);
             }
         });
+        getContentPane().add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 21, -1, -1));
 
+        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\roberto\\Documents\\ciclo ix\\java\\Poyecto\\ProyectoJAVA\\build\\classes\\icon\\clear.png")); // NOI18N
         btn_delete.setText("Eliminar");
+        getContentPane().add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 21, -1, -1));
 
         btn_update.setText("modificar");
+        getContentPane().add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 89, -1));
 
         btn_search.setText("search");
         btn_search.addActionListener(new java.awt.event.ActionListener() {
@@ -112,6 +122,8 @@ public class crud_libros extends javax.swing.JFrame {
                 btn_searchActionPerformed(evt);
             }
         });
+        getContentPane().add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(525, 22, -1, -1));
+        getContentPane().add(in_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 23, 198, -1));
 
         jtregistros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -124,52 +136,7 @@ public class crud_libros extends javax.swing.JFrame {
         jtregistros.setComponentPopupMenu(jPopupMenu1);
         jScrollPane1.setViewportView(jtregistros);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_add, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(10, 10, 10))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(in_search, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_search)
-                .addGap(134, 134, 134)
-                .addComponent(btn_update, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(btn_add)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_delete)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_update, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_search)
-                            .addComponent(in_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(52, 52, 52)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(216, Short.MAX_VALUE))
-        );
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 57, 631, 407));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
