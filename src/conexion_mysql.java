@@ -22,23 +22,7 @@ public class conexion_mysql {
     private static final String user="root";
     private static final String pass="nVC3XJt2nmyF5Lxx";
     private static final String url="jdbc:mysql://localhost:3306/biblioteca";
-    
-//public conexion_mysql(){
-//    con=null;
-//    try{
-//    Class.forName(driver);
-//    con=DriverManager.getConnection(url, user, pass);
-//    if(con!=null){
-//    System.out.print("conexion");
-//    }
-//    }
-//    catch(Exception ex){
-//   System.out.print("Error"+ex);
-//    }
-//
-//}    
-
-
+     
     public static Connection getConnection(){
     con=null;
     try{
