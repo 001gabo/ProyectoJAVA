@@ -100,7 +100,6 @@ public class crud_libros extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_add.setIcon(new javax.swing.ImageIcon("C:\\Users\\roberto\\Documents\\ciclo ix\\java\\Poyecto\\ProyectoJAVA\\build\\classes\\icon\\add.png")); // NOI18N
         btn_add.setText("Agregar");
         btn_add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +108,6 @@ public class crud_libros extends javax.swing.JFrame {
         });
         getContentPane().add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 21, -1, -1));
 
-        btn_delete.setIcon(new javax.swing.ImageIcon("C:\\Users\\roberto\\Documents\\ciclo ix\\java\\Poyecto\\ProyectoJAVA\\build\\classes\\icon\\clear.png")); // NOI18N
         btn_delete.setText("Eliminar");
         getContentPane().add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 21, -1, -1));
 
