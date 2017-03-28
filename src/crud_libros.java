@@ -139,6 +139,7 @@ public class crud_libros extends javax.swing.JFrame {
             }
         ));
         jtregistros.setComponentPopupMenu(jPopupMenu1);
+        jtregistros.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(jtregistros);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -187,8 +188,9 @@ public class crud_libros extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_addActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-       int filas= jtregistros.getSelectedRow();
-       if(filas>0){
+       int filas=0;
+       filas= this.jtregistros.getSelectedRow();
+       if(filas>=0){
         actualizar.setVisible(true);
         this.setVisible(false);
         form_update.pivote.setText(jtregistros.getValueAt(filas,0).toString());
@@ -208,7 +210,7 @@ public class crud_libros extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
       int filas= jtregistros.getSelectedRow();
       try{
-      if(filas>0){
+      if(filas>=0){
         
         String condicion=jtregistros.getValueAt(filas,0).toString();
         con=conexion_mysql.getConnection();   
