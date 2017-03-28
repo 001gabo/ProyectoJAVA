@@ -183,6 +183,7 @@ public class Agregar_usu extends javax.swing.JFrame {
             open= new crud_usuarios();
             open.setVisible(true);
             this.setVisible(false);
+            
         }
         catch(Exception e)
         {
