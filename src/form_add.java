@@ -23,21 +23,14 @@ public class form_add extends javax.swing.JFrame {
   ResultSet rs=null;//rsultado
   Statement s;
   crud_libros open;
- 
-  
-  
   
     public form_add() {
         initComponents();
         mostrar();
         setLocationRelativeTo(null);
         
-    }
-
-    
+    }    
     @SuppressWarnings("unchecked")
-    
-    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -68,41 +61,32 @@ public class form_add extends javax.swing.JFrame {
         combo_estados = new javax.swing.JComboBox();
         btn_author = new javax.swing.JButton();
         btn_categorianew = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setUndecorated(true);
 
         in_desc.setName("in_descripción"); // NOI18N
-        getContentPane().add(in_desc, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 95, 20));
 
         in_anio.setName("in_editorial"); // NOI18N
-        getContentPane().add(in_anio, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 95, 20));
 
         jLabel3.setText("Descripción");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
 
         jLabel9.setText("codigo");
         jLabel9.setName("in_anio"); // NOI18N
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
 
         in_cantidad.setName("in_cantidad"); // NOI18N
-        getContentPane().add(in_cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 95, 20));
 
         in_cod.setName("in_codigo"); // NOI18N
-        getContentPane().add(in_cod, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 92, 20));
 
         jLabel4.setText("cantidad");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
         jLabel11.setText("Observación");
         jLabel11.setName("in_anio"); // NOI18N
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
 
         in_observacion.setName("in_observacion"); // NOI18N
-        getContentPane().add(in_observacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 92, 20));
 
         jLabel5.setText("Autor");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
         jButton1.setText("Aceptar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -110,81 +94,199 @@ public class form_add extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, 130, 30));
 
         in_edicion.setName("in_edicion"); // NOI18N
-        getContentPane().add(in_edicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 95, 20));
 
         jLabel6.setText("Edición");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
 
         in_name.setName("in_namelib"); // NOI18N
-        getContentPane().add(in_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 95, 20));
 
         jLabel7.setText("Editorial");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
 
         jLabel2.setText("Nombre de libro");
         jLabel2.setToolTipText("");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
 
         jLabel8.setText("Año ");
         jLabel8.setName("in_anio"); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
 
-        btn_editorial.setIcon(new javax.swing.ImageIcon("C:\\Users\\roberto\\Documents\\ciclo ix\\java\\Poyecto\\ProyectoJAVA\\build\\classes\\icon\\addn.png")); // NOI18N
         btn_editorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_editorialActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_editorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 20, 20));
 
-        btn_estado.setIcon(new javax.swing.ImageIcon("C:\\Users\\roberto\\Documents\\ciclo ix\\java\\Poyecto\\ProyectoJAVA\\build\\classes\\icon\\addn.png")); // NOI18N
         btn_estado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_estadoActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 20, 20));
 
         jLabel10.setText("Categoria");
         jLabel10.setToolTipText("");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
         jLabel12.setText("Estado");
         jLabel12.setName("in_anio"); // NOI18N
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, -1, -1));
 
         combo_categoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(combo_categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 110, 20));
 
         combo_author.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(combo_author, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 110, 20));
 
         combo_editorial.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(combo_editorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 110, 20));
 
         combo_estados.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(combo_estados, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 110, 20));
 
-        btn_author.setIcon(new javax.swing.ImageIcon("C:\\Users\\roberto\\Documents\\ciclo ix\\java\\Poyecto\\ProyectoJAVA\\build\\classes\\icon\\addn.png")); // NOI18N
         btn_author.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_authorActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_author, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 20, 20));
 
         btn_categorianew.setBackground(javax.swing.UIManager.getDefaults().getColor("activeCaptionBorder"));
-        btn_categorianew.setIcon(new javax.swing.ImageIcon("C:\\Users\\roberto\\Documents\\ciclo ix\\java\\Poyecto\\ProyectoJAVA\\build\\classes\\icon\\addn.png")); // NOI18N
         btn_categorianew.setBorder(null);
         btn_categorianew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_categorianewActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_categorianew, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 20, 20));
+
+        cancelar.setText("Cancelar");
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel2)
+                .addGap(4, 4, 4)
+                .addComponent(in_name, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel3)
+                .addGap(25, 25, 25)
+                .addComponent(in_desc, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel10)
+                .addGap(32, 32, 32)
+                .addComponent(combo_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(btn_categorianew, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel4)
+                .addGap(38, 38, 38)
+                .addComponent(in_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel5)
+                .addGap(52, 52, 52)
+                .addComponent(combo_author, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(btn_author, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel6)
+                .addGap(46, 46, 46)
+                .addComponent(in_edicion, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel7)
+                .addGap(41, 41, 41)
+                .addComponent(combo_editorial, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(btn_editorial, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel8)
+                .addGap(57, 57, 57)
+                .addComponent(in_anio, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel9)
+                .addGap(48, 48, 48)
+                .addComponent(in_cod, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel11)
+                .addGap(19, 19, 19)
+                .addComponent(in_observacion, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel12)
+                .addGap(46, 46, 46)
+                .addComponent(combo_estados, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(btn_estado, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(in_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(in_desc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(combo_categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_categorianew, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(in_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(combo_author, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_author, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(in_edicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(combo_editorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_editorial, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(in_anio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addComponent(in_cod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel11))
+                    .addComponent(in_observacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12)
+                    .addComponent(combo_estados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_estado, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(cancelar)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -192,9 +294,6 @@ public class form_add extends javax.swing.JFrame {
         
         
 //        variables a esconder y desabilitar
-       
-        
-       
         combo_author.removeAllItems(); 
         combo_categoria.removeAllItems();  
         combo_editorial.removeAllItems(); 
@@ -202,10 +301,8 @@ public class form_add extends javax.swing.JFrame {
         
      //  JOptionPane.showMessageDialog(null,in_estado.getLocation());   
         try{
-            
-            
-//      combo_box Categoria     
-          
+               
+//      combo_box Categoria          
            con=conexion_mysql.getConnection();
            s= con.createStatement();         
            rs=s.executeQuery("select cat_categorias from categoria");
@@ -214,18 +311,12 @@ public class form_add extends javax.swing.JFrame {
             this.combo_categoria.addItem(rs.getString(1));
             
             }
-            
  //        combo_box Autor
-            
            rs=s.executeQuery("select aut_name from autor");
            while(rs.next())
             { 
             combo_author.addItem(rs.getString(1));
-             
-            
-            }
-           
-           
+            }       
 //       Combo_box editorial
                   
            rs=s.executeQuery("select ed_name from editoriales");
@@ -233,9 +324,7 @@ public class form_add extends javax.swing.JFrame {
             { 
             this.combo_editorial.addItem(rs.getString(1));
            
-            }
-           
-          
+            }  
  //        combo_box estados
           
            rs=s.executeQuery("select es_estados from estados");
@@ -243,8 +332,7 @@ public class form_add extends javax.swing.JFrame {
             { 
             this.combo_estados.addItem(rs.getString(1));
             
-            }
-           
+            }     
        con.close();
         }
         catch(Exception ex){
@@ -268,42 +356,34 @@ public class form_add extends javax.swing.JFrame {
             id_categoria=rs.getInt(1);
             }
           
-
      //          encontrando el id de la tabla autor 
 //          String pivote=combo_author.getSelectedItem().toString();
 //          int valor=pivote.indexOf(" "); 
 //          String nombre=pivote.substring(0,valor); 
-          int id_autor=0;
+          int id_autor=0;  //encontrando el id de la tabla autor 
           
           rs=s.executeQuery("select id_autor from autor where aut_name='"+(combo_author.getSelectedItem().toString())+"'");
           while(rs.next())
             { 
             id_autor=rs.getInt(1);
             }
-          
-     //          encontrando el id de la editorial
-         int id_editorial=0;
+
+         int id_editorial=0;//encontrando el id de la editorial
           rs=s.executeQuery("select id_editorial from editoriales where ed_name='"+(combo_editorial.getSelectedItem().toString())+"'");
           while(rs.next())
             { 
             id_editorial=rs.getInt(1);
             }
-          
-          
-     //          encontrando el id del estado  
-         int id_estado=0;
+           
+         int id_estado=0;  // encontrando el id del estado 
           rs=s.executeQuery("select id_estados from estados where es_estados='"+(combo_estados.getSelectedItem().toString())+"'");
           while(rs.next())
             { 
             id_estado=rs.getInt(1);
             } 
-          
-          
+            
    // Ahora haremos el insert principal
           
-        
-          
-       
         pst=con.prepareStatement("insert into libros(lib_descrip, lib_name, lib_cantidad, lib_categoria, lib_autor, lib_edicion,lib_editorial,lib_year,lib_codigo,lib_observacion,lib_estado) values(?,?,?,?,?,?,?,?,?,?,?)");
        
         pst.setString(1,in_desc.getText());
@@ -322,9 +402,7 @@ public class form_add extends javax.swing.JFrame {
         con.close();
         open =new crud_libros();
         open.setVisible(true);
-        this.setVisible(false);
-        
-        
+        this.setVisible(false); 
         
         }
         catch(Exception ex){
@@ -428,6 +506,12 @@ public class form_add extends javax.swing.JFrame {
       JOptionPane.showMessageDialog(null,("error"+ex));
     }
     }//GEN-LAST:event_btn_estadoActionPerformed
+
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+      crud_libros librosform =new crud_libros();
+      librosform.setVisible(true);
+      this.setVisible(false);
+    }//GEN-LAST:event_cancelarActionPerformed
     
     /**
      * @param args the command line arguments
@@ -448,6 +532,7 @@ public class form_add extends javax.swing.JFrame {
     private javax.swing.JButton btn_categorianew;
     private javax.swing.JButton btn_editorial;
     private javax.swing.JButton btn_estado;
+    private javax.swing.JButton cancelar;
     private javax.swing.JComboBox combo_author;
     private javax.swing.JComboBox combo_categoria;
     private javax.swing.JComboBox combo_editorial;

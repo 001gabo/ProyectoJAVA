@@ -17,7 +17,7 @@ public class crud_libros extends javax.swing.JFrame {
   Connection con;
   PreparedStatement pst;//query
    ResultSet rs=null;//rsultado
-  
+  form_update actualizar =new form_update();
     
    
    public crud_libros() {
@@ -41,30 +41,36 @@ public class crud_libros extends javax.swing.JFrame {
    modelo.addColumn("Autor");
    modelo.addColumn("Edición");
    modelo.addColumn("Editorial");
+   modelo.addColumn("año");
+   modelo.addColumn("Observacion");
+   modelo.addColumn("Codigo");
    jtregistros.setModel(modelo);
    String sql="";
   if(palabra.equals("")){ 
-  sql="select id_lib, lib_descrip, lib_name, lib_cantidad, lib_categoria, lib_autor, lib_edicion,lib_editorial  from libros";
+  sql="select id_lib, lib_descrip, lib_name, lib_cantidad, lib_categoria, lib_autor, lib_edicion,lib_editorial,lib_year,lib_observacion,lib_codigo from libros";
   
   }
   else{ 
-   sql="select id_lib, lib_descrip, lib_name, lib_cantidad, lib_categoria, lib_autor, lib_edicion,lib_editorial  from libros where id_lib  LIKE '%"+palabra+"%' or lib_name LIKE '%"+palabra+"%'";
+   sql="select id_lib, lib_descrip, lib_name, lib_cantidad, lib_categoria, lib_autor, lib_edicion,lib_editorial,lib_year,lib_observacion,lib_codigo  from libros where id_lib  LIKE '%"+palabra+"%' or lib_name LIKE '%"+palabra+"%'";
   } 
    
-   String []array = new String[8];
+   String []array = new String[11];
    con=conexion_mysql.getConnection();
    Statement s= con.createStatement();
    rs=s.executeQuery(sql);
         while(rs.next())
         { 
         array[0]=rs.getString(1);
-        array[1]=rs.getString(2);
-        array[2]=rs.getString(3);
+        array[1]=rs.getString(3);
+        array[2]=rs.getString(2);
         array[3]=rs.getString(4);
         array[4]=rs.getString(5);
         array[5]=rs.getString(6);
         array[6]=rs.getString(7);
         array[7]=rs.getString(8);
+        array[8]=rs.getString(9);
+        array[9]=rs.getString(10);
+        array[10]=rs.getString(11);
         modelo.addRow(array);
         }
         jtregistros.setModel(modelo);
@@ -82,11 +88,9 @@ public class crud_libros extends javax.swing.JFrame {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        jMenu1 = new javax.swing.JMenu();
-        jPopupMenu2 = new javax.swing.JPopupMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         btn_add = new javax.swing.JButton();
-        btn_delete = new javax.swing.JButton();
-        btn_update = new javax.swing.JButton();
         btn_search = new javax.swing.JButton();
         in_search = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -94,11 +98,23 @@ public class crud_libros extends javax.swing.JFrame {
 
         jPopupMenu1.setName("Modificar"); // NOI18N
 
-        jMenu1.setText("Modificar");
-        jPopupMenu1.add(jMenu1);
+        jMenuItem2.setText("Modificar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem2);
+
+        jMenuItem1.setText("Borrar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_add.setText("Agregar");
         btn_add.addActionListener(new java.awt.event.ActionListener() {
@@ -106,13 +122,6 @@ public class crud_libros extends javax.swing.JFrame {
                 btn_addActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 21, -1, -1));
-
-        btn_delete.setText("Eliminar");
-        getContentPane().add(btn_delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 21, -1, -1));
-
-        btn_update.setText("modificar");
-        getContentPane().add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 89, -1));
 
         btn_search.setText("search");
         btn_search.addActionListener(new java.awt.event.ActionListener() {
@@ -120,8 +129,6 @@ public class crud_libros extends javax.swing.JFrame {
                 btn_searchActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(525, 22, -1, -1));
-        getContentPane().add(in_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 23, 198, -1));
 
         jtregistros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -134,7 +141,35 @@ public class crud_libros extends javax.swing.JFrame {
         jtregistros.setComponentPopupMenu(jPopupMenu1);
         jScrollPane1.setViewportView(jtregistros);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 57, 631, 407));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(btn_add)
+                .addGap(240, 240, 240)
+                .addComponent(in_search, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(btn_search))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(btn_add))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(in_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(btn_search)))
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -144,16 +179,53 @@ public class crud_libros extends javax.swing.JFrame {
    mostrar(in_search.getText());
     }//GEN-LAST:event_btn_searchActionPerformed
 
-    
-    
-   
-    
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
       new form_add().setVisible(true);
       this.setVisible(false);
           
       
     }//GEN-LAST:event_btn_addActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+       int filas= jtregistros.getSelectedRow();
+       if(filas>0){
+        actualizar.setVisible(true);
+        this.setVisible(false);
+        form_update.pivote.setText(jtregistros.getValueAt(filas,0).toString());
+        form_update.in_cod.setText(jtregistros.getValueAt(filas,10).toString());
+        form_update.in_name.setText(jtregistros.getValueAt(filas,1).toString());
+        form_update.in_desc.setText(jtregistros.getValueAt(filas,2).toString());
+        form_update.in_edicion.setText(jtregistros.getValueAt(filas,6).toString());
+        form_update.in_cantidad.setText(jtregistros.getValueAt(filas,3).toString());
+        form_update.in_anio.setText(jtregistros.getValueAt(filas,8).toString());
+        form_update.in_observacion.setText(jtregistros.getValueAt(filas,9).toString());
+       }
+       else{
+        JOptionPane.showMessageDialog(null,"Seleccionar registro a modificar");
+       }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+      int filas= jtregistros.getSelectedRow();
+      try{
+      if(filas>0){
+        
+        String condicion=jtregistros.getValueAt(filas,0).toString();
+        con=conexion_mysql.getConnection();   
+        pst=con.prepareStatement("delete from libros where id_lib='"+condicion+"'");
+        pst.executeUpdate();
+        con.close();
+        DefaultTableModel dtm = (DefaultTableModel) jtregistros.getModel(); //TableProducto es el nombre de mi tabla ;) 
+        dtm.removeRow(jtregistros.getSelectedRow()); 
+       }
+       else{
+        JOptionPane.showMessageDialog(null,"Seleccionar registro a modificar");
+       }
+      }
+      catch(Exception ex){
+       JOptionPane.showMessageDialog(null,"Error en: "+ex);
+      }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,13 +271,11 @@ public class crud_libros extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_add;
-    private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_search;
-    private javax.swing.JButton btn_update;
     private javax.swing.JTextField in_search;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtregistros;
     // End of variables declaration//GEN-END:variables
