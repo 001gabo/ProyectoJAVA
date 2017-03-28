@@ -89,6 +89,11 @@ public class crud_usuarios extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jB_agregar.setText("Agregar");
+        jB_agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB_agregarActionPerformed(evt);
+            }
+        });
 
         jB_modificar.setText("Modificar");
 
@@ -156,6 +161,12 @@ public class crud_usuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
         mostrar(jB_busq.getText());
     }//GEN-LAST:event_jB_busqActionPerformed
+
+    private void jB_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_agregarActionPerformed
+        // TODO add your handling code here:
+        new Agregar_usu().setVisible(true);
+      this.setVisible(false);
+    }//GEN-LAST:event_jB_agregarActionPerformed
 
     /**
      * @param args the command line arguments

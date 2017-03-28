@@ -163,20 +163,20 @@ public class Agregar_usu extends javax.swing.JFrame {
             int id_rol=0;
             Connection con_usu = DriverManager.getConnection("jdbc:mysql://localhost:3307/biblioteca","root","");
             Statement st_usu = con_usu.createStatement();
-            ResultSet rs_usu = st_usu.executeQuery("select rol from usuario where rol='"+(Combo_rol.getSelectedItem().toString())+"'");
+            ResultSet rs_usu = st_usu.executeQuery("select id_rol from roles where rol_tipo='"+(Combo_rol.getSelectedItem().toString())+"'");
             while(rs_usu.next())
             { 
             id_rol=rs_usu.getInt(1);
             }
             
-            PreparedStatement pst_usu = con_usu.prepareStatement("insert into usuario (id_user, us_rol, us_name, us_lastname, us_pass, us_address, us_number, us_email,) values(?,?,?,?,?,?,?,?)");
+            PreparedStatement pst_usu = con_usu.prepareStatement("insert into usuario (id_user, us_rol, us_name, us_lastname, us_pass, us_address, us_number, us_email) values(?,?,?,?,?,?,?,?)");
             pst_usu.setString(1,jT_idusu.getText());
             pst_usu.setInt(2, id_rol);
             pst_usu.setString(3,jT_usuname.getText());
             pst_usu.setString(4,jT_usuLname.getText());
             pst_usu.setString(5,jT_usupass.getText());
             pst_usu.setString(6,jT_usuadd.getText());
-            pst_usu.setString(7,jT_usunum.getText());
+            pst_usu.setInt(7,Integer.parseInt(jT_usunum.getText()));
             pst_usu.setString(8,jT_usue.getText());
             pst_usu.executeUpdate();
             con_usu.close();
@@ -197,7 +197,7 @@ public class Agregar_usu extends javax.swing.JFrame {
         try{
             Connection con_usu = DriverManager.getConnection("jdbc:mysql://localhost:3307/biblioteca","root","");
             Statement st_usu = con_usu.createStatement();
-            ResultSet rs_usu = st_usu.executeQuery("select rol from usuario");
+            ResultSet rs_usu = st_usu.executeQuery("select rol_tipo from roles");
             while(rs_usu.next())
             { 
             this.Combo_rol.addItem(rs_usu.getString(1));
