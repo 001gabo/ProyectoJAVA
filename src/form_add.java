@@ -23,7 +23,8 @@ public class form_add extends javax.swing.JFrame {
   ResultSet rs=null;//rsultado
   Statement s;
   crud_libros open;
-  validaciones obj;
+  int contpal=0;
+  
   
     public form_add() {
         initComponents();
@@ -72,6 +73,11 @@ public class form_add extends javax.swing.JFrame {
         getContentPane().add(in_desc, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 95, -1));
 
         in_anio.setName("in_editorial"); // NOI18N
+        in_anio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                in_anioKeyTyped(evt);
+            }
+        });
         getContentPane().add(in_anio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 95, -1));
 
         jLabel3.setText("Descripción");
@@ -82,6 +88,11 @@ public class form_add extends javax.swing.JFrame {
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
 
         in_cantidad.setName("in_cantidad"); // NOI18N
+        in_cantidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                in_cantidadKeyTyped(evt);
+            }
+        });
         getContentPane().add(in_cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 95, -1));
 
         in_cod.setName("in_codigo"); // NOI18N
@@ -115,6 +126,11 @@ public class form_add extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
 
         in_name.setName("in_namelib"); // NOI18N
+        in_name.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                in_nameKeyTyped(evt);
+            }
+        });
         getContentPane().add(in_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 95, -1));
 
         jLabel7.setText("Editorial");
@@ -283,7 +299,7 @@ public class form_add extends javax.swing.JFrame {
             
    // Ahora haremos el insert principal
          
-        obj=new validaciones();
+        
        
         
         pst=con.prepareStatement("insert into libros(lib_descrip, lib_name, lib_cantidad, lib_categoria, lib_autor, lib_edicion,lib_editorial,lib_year,lib_codigo,lib_observacion,lib_estado) values(?,?,?,?,?,?,?,?,?,?,?)");
@@ -309,7 +325,7 @@ public class form_add extends javax.swing.JFrame {
         }
         catch(Exception ex){
             
-            JOptionPane.showMessageDialog(null,("error"+ex));
+            JOptionPane.showMessageDialog(null,("Complete todo el formúlario"));
         }
         
        
@@ -416,6 +432,40 @@ public class form_add extends javax.swing.JFrame {
       librosform.setVisible(true);
       this.setVisible(false);
     }//GEN-LAST:event_cancelarActionPerformed
+
+    private void in_cantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_in_cantidadKeyTyped
+        char num=evt.getKeyChar();
+        if(num<'0' || num>'9')
+        evt.consume();
+    }//GEN-LAST:event_in_cantidadKeyTyped
+
+    private void in_nameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_in_nameKeyTyped
+//     char palabra=evt.getKeyChar();
+//    
+//     while(contpal>=0){
+//     
+//      if(palabra<'A'|| palabra>'Z')
+//      {
+//          contpal++;
+//          
+//          evt.consume();
+//        
+//      }
+//    
+//      contpal=0;
+//     }
+ 
+    }//GEN-LAST:event_in_nameKeyTyped
+
+    private void in_anioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_in_anioKeyTyped
+        char num=evt.getKeyChar();
+        if(num<'0' || num>'9')
+        
+        evt.consume();
+        
+       
+    }//GEN-LAST:event_in_anioKeyTyped
+   
     
     /**
      * @param args the command line arguments
