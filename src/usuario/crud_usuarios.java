@@ -46,7 +46,7 @@ public class crud_usuarios extends javax.swing.JFrame {
    Connection con_usu = DriverManager.getConnection("jdbc:mysql://localhost:3307/biblioteca","root","");
    Statement st_usu = con_usu.createStatement();
    ResultSet rs_usu = st_usu.executeQuery(sql);
-   rs_usu=st_usu.executeQuery(sql);
+   //rs_usu=st_usu.executeQuery(sql);
         while(rs_usu.next())
         { 
         array[0]=rs_usu.getString(1);
@@ -64,7 +64,7 @@ public class crud_usuarios extends javax.swing.JFrame {
     }                                          
 
     catch(Exception e){
-     System.out.println("error"+e);
+     JOptionPane.showMessageDialog(null,("error "+e));
     }
     
     }
