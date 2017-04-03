@@ -4,19 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.*;
-import javax.swing.JComboBox;
-import javax.swing.table.DefaultTableModel;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author roberto
- */
 public class form_add extends javax.swing.JFrame {
   Connection con;
   PreparedStatement pst;//query
@@ -103,7 +91,7 @@ public class form_add extends javax.swing.JFrame {
 
         jLabel11.setText("Observación");
         jLabel11.setName("in_anio"); // NOI18N
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
 
         in_observacion.setName("in_observacion"); // NOI18N
         getContentPane().add(in_observacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 92, -1));
@@ -254,12 +242,10 @@ public class form_add extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,("error"+ex));
         }
     }
-    
-    
+ 
         
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-        try{
+         try{
           con=conexion_mysql.getConnection();
           s= con.createStatement();
           
@@ -271,7 +257,7 @@ public class form_add extends javax.swing.JFrame {
             id_categoria=rs.getInt(1);
             }
           
-     //          encontrando el id de la tabla autor 
+     //     encontrando el id de la tabla autor 
 //          String pivote=combo_author.getSelectedItem().toString();
 //          int valor=pivote.indexOf(" "); 
 //          String nombre=pivote.substring(0,valor); 
@@ -298,12 +284,9 @@ public class form_add extends javax.swing.JFrame {
             } 
             
    // Ahora haremos el insert principal
-         
+        if(in_cod.getText().matches("[A-Z]{2}+[/-]{1}+[0-9]{2}+[/-]{1}+[0-9]{1}")) {
         
-       
-        
-        pst=con.prepareStatement("insert into libros(lib_descrip, lib_name, lib_cantidad, lib_categoria, lib_autor, lib_edicion,lib_editorial,lib_year,lib_codigo,lib_observacion,lib_estado) values(?,?,?,?,?,?,?,?,?,?,?)");
-       
+        pst=con.prepareStatement("insert into libros(lib_descrip, lib_name, lib_cantidad, lib_categoria, lib_autor, lib_edicion,lib_editorial,lib_year,lib_codigo,lib_observacion,lib_estado) values(?,?,?,?,?,?,?,?,?,?,?)");      
         pst.setString(1,in_desc.getText());
         pst.setString(2,in_name.getText());
         pst.setInt(3,Integer.parseInt(in_cantidad.getText()));
@@ -321,15 +304,18 @@ public class form_add extends javax.swing.JFrame {
         open =new crud_libros();
         open.setVisible(true);
         this.setVisible(false); 
+
+        }else {
+         JOptionPane.showMessageDialog(null, "El campo codigo esta mal, digitar de la siguiente manera ej: IM-01-1 donde IM es el tipo de estante,01 el número de estante y 1 es el nivel.");
         
+        }
         }
         catch(Exception ex){
             
-            JOptionPane.showMessageDialog(null,("Complete todo el formúlario"));
+            JOptionPane.showMessageDialog(null,("Error"+ex.toString()));
         }
-        
        
-
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btn_categorianewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_categorianewActionPerformed
@@ -346,7 +332,8 @@ public class form_add extends javax.swing.JFrame {
     con.close();
     combo_categoria.addItem(categoria);
     
-     
+     JOptionPane.showMessageDialog(null, "El campo codigo esta mal, digitar de la siguiente manera ej: IM-01-1 donde IM es el tipo de estante,01 el número de estante y 1 es el nivel.");
+    
     }
     
     }
