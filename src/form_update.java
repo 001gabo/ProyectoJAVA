@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,6 +30,8 @@ public class form_update extends javax.swing.JFrame {
         initComponents();
         pivote.setVisible(false);
         setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new Color(26,35,126));
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -64,16 +67,24 @@ public class form_update extends javax.swing.JFrame {
         });
         getContentPane().add(in_anio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 130, -1));
 
+        jLabel3.setBackground(new java.awt.Color(26, 35, 126));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Descripción");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
+        jLabel4.setBackground(new java.awt.Color(26, 35, 126));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("cantidad");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
+        jLabel11.setBackground(new java.awt.Color(26, 35, 126));
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Observación");
         jLabel11.setName("in_anio"); // NOI18N
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
 
+        jLabel5.setBackground(new java.awt.Color(26, 35, 126));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Codigo");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
@@ -85,16 +96,22 @@ public class form_update extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 90, 30));
 
+        jLabel6.setBackground(new java.awt.Color(26, 35, 126));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Edición");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         in_name.setName("in_namelib"); // NOI18N
         getContentPane().add(in_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 130, -1));
 
+        jLabel2.setBackground(new java.awt.Color(26, 35, 126));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre de libro");
         jLabel2.setToolTipText("");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
+        jLabel8.setBackground(new java.awt.Color(26, 35, 126));
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Año ");
         jLabel8.setName("in_anio"); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
