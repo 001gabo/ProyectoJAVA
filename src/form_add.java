@@ -17,7 +17,7 @@ public class form_add extends javax.swing.JFrame {
     public form_add() {
         initComponents();
         mostrar();
-      //  setLocationRelativeTo(null);
+       setLocationRelativeTo(null);
         
     }    
     @SuppressWarnings("unchecked")
@@ -206,30 +206,31 @@ public class form_add extends javax.swing.JFrame {
                
 //      combo_box Categoria          
            con=conexion_mysql.getConnection();
-           s= con.createStatement();         
-           rs=s.executeQuery("select cat_categorias from categoria");
+           s= con.createStatement();  
+           rs=s.executeQuery("call pa_addselectcategoria");
            while(rs.next())
             { 
             this.combo_categoria.addItem(rs.getString(1));
             
             }
  //        combo_box Autor
-           rs=s.executeQuery("select aut_name from autor");
+            
+           rs=s.executeQuery("call pa_addselectauthort");
            while(rs.next())
             { 
             combo_author.addItem(rs.getString(1));
             }       
 //       Combo_box editorial
                   
-           rs=s.executeQuery("select ed_name from editoriales");
+           rs=s.executeQuery("call pa_addselectedit");
            while(rs.next())
             { 
             this.combo_editorial.addItem(rs.getString(1));
            
             }  
  //        combo_box estados
-          
-           rs=s.executeQuery("select es_estados from estados");
+   
+           rs=s.executeQuery("call pa_addselectestadost");
            while(rs.next())
             { 
             this.combo_estados.addItem(rs.getString(1));
@@ -289,8 +290,8 @@ public class form_add extends javax.swing.JFrame {
         
          pst=con.prepareStatement("call pa_addglobal('"+(in_desc.getText())+"','"+(in_name.getText())+"',"+(Integer.parseInt(in_cantidad.getText()))+","+(id_categoria)+","+(id_autor)+",'"+(in_edicion.getText())+"',"+(id_editorial)+","+(Integer.parseInt(in_anio.getText()))+",'"+(in_cod.getText())+"','"+(in_observacion.getText())+"',"+(id_estado)+")");      
       
-//        String query="'"+(in_desc.getText())+"','"+(in_name.getText())+"',"+(Integer.parseInt(in_cantidad.getText()))+","+(id_categoria)+","+(id_autor)+",'"+(in_edicion.getText())+"',"+(id_editorial)+","+(Integer.parseInt(in_anio.getText()))+",'"+(in_cod.getText())+"','"+(in_observacion.getText())+"',"+(id_estado)+"";
-//        System.out.print(""+query);
+//      String query="'"+(in_desc.getText())+"','"+(in_name.getText())+"',"+(Integer.parseInt(in_cantidad.getText()))+","+(id_categoria)+","+(id_autor)+",'"+(in_edicion.getText())+"',"+(id_editorial)+","+(Integer.parseInt(in_anio.getText()))+",'"+(in_cod.getText())+"','"+(in_observacion.getText())+"',"+(id_estado)+"";
+//      System.out.print(""+query);
         pst.executeUpdate();
         con.close();
         open =new crud_libros();
@@ -318,22 +319,19 @@ public class form_add extends javax.swing.JFrame {
     frame.dispose();
     }else{      
     con=conexion_mysql.getConnection();   
-    pst=con.prepareStatement("insert into categoria(cat_categorias) values(?)");
-    pst.setString(1,categoria);
+    //call pa_addinsertcatego('"+(categoria)+"')
+    
+    pst=con.prepareStatement("call pa_addinsertcatego('"+(categoria)+"')");
     pst.executeUpdate();
     con.close();
     combo_categoria.addItem(categoria);
-    
-     JOptionPane.showMessageDialog(null, "El campo codigo esta mal, digitar de la siguiente manera ej: IM-01-1 donde IM es el tipo de estante,01 el número de estante y 1 es el nivel.");
-    
-    }
+        }
     
     }
     catch (Exception ex){
       JOptionPane.showMessageDialog(null,("error"+ex));
     }
    
-    
     }//GEN-LAST:event_btn_categorianewActionPerformed
 
     private void btn_authorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_authorActionPerformed
@@ -343,14 +341,14 @@ public class form_add extends javax.swing.JFrame {
     String name = JOptionPane.showInputDialog(frame2,"Ingrese un nombre y un apellido del autor a registrar");
     if(name==null){
     frame2.dispose();
-    }else{      
+    }else{ 
+        //call pa_addinsertautor('"+(categoria)+"')
         con=conexion_mysql.getConnection();   
-        pst=con.prepareStatement("insert into autor(aut_name) values(?)");
-        pst.setString(1,name);
+        pst=con.prepareStatement("call pa_addinsertautor('"+(name)+"')");
+       
         pst.executeUpdate();
         con.close();
         combo_author.addItem(name);
-        
         }
     }
     catch (Exception ex){
@@ -366,10 +364,10 @@ public class form_add extends javax.swing.JFrame {
     String edit = JOptionPane.showInputDialog(frame3,"Ingrese una editorial");
     if(edit==null){
     frame3.dispose();
-    }else{      
+    }else{ 
+        //call pa_addinserteditorial('"+(name)+"')
         con=conexion_mysql.getConnection();   
-        pst=con.prepareStatement("insert into editoriales(ed_name) values(?)");
-        pst.setString(1,edit);
+        pst=con.prepareStatement("call pa_addinserteditorial('"+(edit)+"')");
         pst.executeUpdate();
         con.close();
         combo_editorial.addItem(edit);
@@ -391,10 +389,10 @@ public class form_add extends javax.swing.JFrame {
     String state = JOptionPane.showInputDialog(frame4,"Ingrese un nuevo estado del libro");
     if(state==null){
     frame4.dispose();
-    }else{      
+    }else{     
+        
         con=conexion_mysql.getConnection();   
-        pst=con.prepareStatement("insert into estados(es_estados) values(?)");
-        pst.setString(1,state);
+        pst=con.prepareStatement("call pa_addinsertestado('"+(state)+"')");
         pst.executeUpdate();
         con.close();
         combo_estados.addItem(state);

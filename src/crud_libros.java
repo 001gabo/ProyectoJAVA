@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,6 +7,7 @@ import java.sql.*;
 import javax.swing.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,9 +24,11 @@ public class crud_libros extends javax.swing.JFrame {
    
    public crud_libros() {
         initComponents();
+        this.getContentPane().setBackground(new Color(26,35,126));
+        
         mostrar("");
-     
-         setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
+        
     }
 
    private void mostrar(String palabra){
@@ -45,6 +49,9 @@ public class crud_libros extends javax.swing.JFrame {
    modelo.addColumn("Observacion");
    modelo.addColumn("Codigo");
    jtregistros.setModel(modelo);
+   this.jtregistros.setBackground(new Color(26,35,126));
+   DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+   
    String sql="";
   if(palabra.equals("")){ 
   sql="call pa_crudprincipal";
@@ -59,6 +66,7 @@ public class crud_libros extends javax.swing.JFrame {
    rs=s.executeQuery(sql);
         while(rs.next())
         { 
+        
         array[0]=rs.getString(1);
         array[1]=rs.getString(3);
         array[2]=rs.getString(2);
@@ -114,6 +122,8 @@ public class crud_libros extends javax.swing.JFrame {
         jPopupMenu1.add(jMenuItem1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(26, 35, 126));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_add.setText("Agregar");
         btn_add.addActionListener(new java.awt.event.ActionListener() {
@@ -121,6 +131,7 @@ public class crud_libros extends javax.swing.JFrame {
                 btn_addActionPerformed(evt);
             }
         });
+        getContentPane().add(btn_add, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 21, -1, -1));
 
         btn_search.setText("search");
         btn_search.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +139,8 @@ public class crud_libros extends javax.swing.JFrame {
                 btn_searchActionPerformed(evt);
             }
         });
+        getContentPane().add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(633, 22, -1, -1));
+        getContentPane().add(in_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 23, 198, -1));
 
         jtregistros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -141,35 +154,7 @@ public class crud_libros extends javax.swing.JFrame {
         jtregistros.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(jtregistros);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(btn_add)
-                .addGap(240, 240, 240)
-                .addComponent(in_search, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(btn_search))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(btn_add))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(in_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(btn_search)))
-                .addGap(12, 12, 12)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 57, 708, 407));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
