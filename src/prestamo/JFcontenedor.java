@@ -39,7 +39,7 @@ public class JFcontenedor extends JFrame {
         panelMain.add(testButton);
 
         // creating new JPanelOne object from JPanelOne class containing black JPanel
-        panel = new JPprestamo();
+      ///  panel = new JPprestamo();
 
         // adding black JPanel to main JPanel (white)
         panelMain.add(panel);

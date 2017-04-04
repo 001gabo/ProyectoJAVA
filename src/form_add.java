@@ -17,7 +17,7 @@ public class form_add extends javax.swing.JFrame {
     public form_add() {
         initComponents();
         mostrar();
-        setLocationRelativeTo(null);
+      //  setLocationRelativeTo(null);
         
     }    
     @SuppressWarnings("unchecked")
@@ -287,15 +287,15 @@ public class form_add extends javax.swing.JFrame {
    // Ahora haremos el insert principal
         if(in_cod.getText().matches("[A-Z]{2}+[/-]{1}+[0-9]{2}+[/-]{1}+[0-9]{1}")) {
         
-//         pst=con.prepareStatement("call pa_addglobal('"+(in_desc.getText())+"','"+(in_name.getText())+"',"+(Integer.parseInt(in_cantidad.getText()))+","+(id_categoria)+","+(id_autor)+",'"+(in_edicion.getText())+"',"+(id_editorial)+","+(Integer.parseInt(in_anio.getText()))+",'"+(in_cod.getText())+"','"+(in_observacion.getText())+"',"+(id_estado)+")");      
-//      
-        String query="'"+(in_desc.getText())+"','"+(in_name.getText())+"',"+(Integer.parseInt(in_cantidad.getText()))+","+(id_categoria)+","+(id_autor)+",'"+(in_edicion.getText())+"',"+(id_editorial)+","+(Integer.parseInt(in_anio.getText()))+",'"+(in_cod.getText())+"','"+(in_observacion.getText())+"',"+(id_estado)+")";
-        System.out.print(""+query);
-//        pst.executeUpdate();
-//        con.close();
-//        open =new crud_libros();
-//        open.setVisible(true);
-//        this.setVisible(false); 
+         pst=con.prepareStatement("call pa_addglobal('"+(in_desc.getText())+"','"+(in_name.getText())+"',"+(Integer.parseInt(in_cantidad.getText()))+","+(id_categoria)+","+(id_autor)+",'"+(in_edicion.getText())+"',"+(id_editorial)+","+(Integer.parseInt(in_anio.getText()))+",'"+(in_cod.getText())+"','"+(in_observacion.getText())+"',"+(id_estado)+")");      
+      
+//        String query="'"+(in_desc.getText())+"','"+(in_name.getText())+"',"+(Integer.parseInt(in_cantidad.getText()))+","+(id_categoria)+","+(id_autor)+",'"+(in_edicion.getText())+"',"+(id_editorial)+","+(Integer.parseInt(in_anio.getText()))+",'"+(in_cod.getText())+"','"+(in_observacion.getText())+"',"+(id_estado)+"";
+//        System.out.print(""+query);
+        pst.executeUpdate();
+        con.close();
+        open =new crud_libros();
+        open.setVisible(true);
+        this.setVisible(false); 
 
         }else {
          JOptionPane.showMessageDialog(null, "El campo codigo esta mal, digitar de la siguiente manera ej: IM-01-1 donde IM es el tipo de estante,01 el número de estante y 1 es el nivel.");
