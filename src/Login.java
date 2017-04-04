@@ -182,41 +182,44 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUserActionPerformed
 
     private void txtUserMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUserMousePressed
-        this.txtUser.setText(""); 
+        
     }//GEN-LAST:event_txtUserMousePressed
 
     private void PWpassMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PWpassMousePressed
-        this.txtUser.setText("");
+        
     }//GEN-LAST:event_PWpassMousePressed
 
     private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
-         if(txtUser.getText().equals("") || String.valueOf(PWpass.getPassword()).equals("")){
+         String query; 
+        int respuesta=0;
+        if(txtUser.getText().equals("") || String.valueOf(PWpass.getPassword()).equals("")){
             JOptionPane.showMessageDialog(this,"Existen campos vacios");
         }else{
             //Metodo para la conexion a la bdd
             Connection con;
-            PreparedStatement ps;
+            Statement st;
             ResultSet rs; 
+            CallableStatement pstat;
 
             String usuario,pass;
             usuario = txtUser.getText();
             pass=String.valueOf(PWpass.getPassword());
 
             try{  
-                con=DriverManager.getConnection("jdbc:mysql://localhost/biblioteca","root","");
-                ps = con.prepareStatement("SELECT `id_user` `us_pass` FROM `usuario` WHERE  `id_user`=? AND`us_pass`= ?;");
-                ps.setString(1,usuario);
-                ps.setString(2,pass);
-                rs= ps.executeQuery();
-                if(rs.next()){
-                     JOptionPane.showMessageDialog(this,"Bienvenido");  
-                     //con esto se va de una pantalla a otra
-                     this.dispose();
-                     new Principal().setVisible(true);
-                }else{
-                    JOptionPane.showMessageDialog(this,"Usuario o contraseña incorrecto.");
-                }
+                con=conexion_mysql.getConnection();
+                pstat=con.prepareCall("{?=CALL PA_Login('"+usuario+"','"+pass+"')}");//llama a la funcion para el inicio de sesion
+                pstat.registerOutParameter(1,Types.INTEGER);
+                pstat.execute();
+                respuesta=pstat.getInt(1);
+                pstat.close();
                 con.close();
+                if(respuesta==1){
+                    JOptionPane.showMessageDialog(null,"Bienvenido");
+                    this.dispose();
+                    new Principal().setVisible(true);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrecto");
+                }
             }catch(SQLException ex){ 
                 JOptionPane.showMessageDialog(this,"Ocurrio un error: "+ex); 
             } 
