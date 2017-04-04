@@ -249,61 +249,53 @@ public class form_add extends javax.swing.JFrame {
           con=conexion_mysql.getConnection();
           s= con.createStatement();
           
-          //          encontrando el id de la tabla categora 
+          //          encontrando el id de la tabla categora 	pa_addselectcatego
           int id_categoria=0;
-          rs=s.executeQuery("select id_categoria from categoria where cat_categorias='"+(combo_categoria.getSelectedItem().toString())+"'");
+          //	pa_addselectcatego
+          rs=s.executeQuery("call pa_addselectcatego('"+(combo_categoria.getSelectedItem().toString())+"')");
           while(rs.next())
             { 
             id_categoria=rs.getInt(1);
             }
-          
+          System.out.print(id_categoria);
      //     encontrando el id de la tabla autor 
 //          String pivote=combo_author.getSelectedItem().toString();
 //          int valor=pivote.indexOf(" "); 
 //          String nombre=pivote.substring(0,valor); 
           int id_autor=0;  //encontrando el id de la tabla autor 
-          
-          rs=s.executeQuery("select id_autor from autor where aut_name='"+(combo_author.getSelectedItem().toString())+"'");
+  
+          rs=s.executeQuery("call pa_addselectauthor('"+(combo_author.getSelectedItem().toString())+"')");
           while(rs.next())
             { 
             id_autor=rs.getInt(1);
             }
-
-         int id_editorial=0;//encontrando el id de la editorial
-          rs=s.executeQuery("select id_editorial from editoriales where ed_name='"+(combo_editorial.getSelectedItem().toString())+"'");
+         System.out.print(id_autor);
+         int id_editorial=0;//encontrando el id de la editorial 
+          rs=s.executeQuery("call pa_addselecteditorial('"+(combo_editorial.getSelectedItem().toString())+"')");
           while(rs.next())
             { 
             id_editorial=rs.getInt(1);
             }
-           
+          System.out.print( id_editorial);
          int id_estado=0;  // encontrando el id del estado 
-          rs=s.executeQuery("select id_estados from estados where es_estados='"+(combo_estados.getSelectedItem().toString())+"'");
+          rs=s.executeQuery("call pa_addselectestados('"+(combo_estados.getSelectedItem().toString())+"')");
           while(rs.next())
             { 
             id_estado=rs.getInt(1);
             } 
-            
+            System.out.print( id_estado);
    // Ahora haremos el insert principal
         if(in_cod.getText().matches("[A-Z]{2}+[/-]{1}+[0-9]{2}+[/-]{1}+[0-9]{1}")) {
         
-        pst=con.prepareStatement("insert into libros(lib_descrip, lib_name, lib_cantidad, lib_categoria, lib_autor, lib_edicion,lib_editorial,lib_year,lib_codigo,lib_observacion,lib_estado) values(?,?,?,?,?,?,?,?,?,?,?)");      
-        pst.setString(1,in_desc.getText());
-        pst.setString(2,in_name.getText());
-        pst.setInt(3,Integer.parseInt(in_cantidad.getText()));
-        pst.setInt(4,id_categoria);
-        pst.setInt(5,id_autor);
-        pst.setString(6,in_edicion.getText());
-        pst.setInt(7,id_editorial);
-        pst.setInt(8,Integer.parseInt(in_anio.getText()));
-        pst.setString(9,in_cod.getText());
-        pst.setString(10,in_observacion.getText());
-        pst.setInt(11,id_estado);
-        
-        pst.executeUpdate();
-        con.close();
-        open =new crud_libros();
-        open.setVisible(true);
-        this.setVisible(false); 
+//         pst=con.prepareStatement("call pa_addglobal('"+(in_desc.getText())+"','"+(in_name.getText())+"',"+(Integer.parseInt(in_cantidad.getText()))+","+(id_categoria)+","+(id_autor)+",'"+(in_edicion.getText())+"',"+(id_editorial)+","+(Integer.parseInt(in_anio.getText()))+",'"+(in_cod.getText())+"','"+(in_observacion.getText())+"',"+(id_estado)+")");      
+//      
+        String query="'"+(in_desc.getText())+"','"+(in_name.getText())+"',"+(Integer.parseInt(in_cantidad.getText()))+","+(id_categoria)+","+(id_autor)+",'"+(in_edicion.getText())+"',"+(id_editorial)+","+(Integer.parseInt(in_anio.getText()))+",'"+(in_cod.getText())+"','"+(in_observacion.getText())+"',"+(id_estado)+")";
+        System.out.print(""+query);
+//        pst.executeUpdate();
+//        con.close();
+//        open =new crud_libros();
+//        open.setVisible(true);
+//        this.setVisible(false); 
 
         }else {
          JOptionPane.showMessageDialog(null, "El campo codigo esta mal, digitar de la siguiente manera ej: IM-01-1 donde IM es el tipo de estante,01 el número de estante y 1 es el nivel.");

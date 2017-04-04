@@ -47,11 +47,10 @@ public class crud_libros extends javax.swing.JFrame {
    jtregistros.setModel(modelo);
    String sql="";
   if(palabra.equals("")){ 
-  sql="select id_lib, lib_descrip, lib_name, lib_cantidad, lib_categoria, lib_autor, lib_edicion,lib_editorial,lib_year,lib_observacion,lib_codigo from libros";
-  
+  sql="call pa_crudprincipal";
   }
   else{ 
-   sql="select id_lib, lib_descrip, lib_name, lib_cantidad, lib_categoria, lib_autor, lib_edicion,lib_editorial,lib_year,lib_observacion,lib_codigo  from libros where id_lib  LIKE '%"+palabra+"%' or lib_name LIKE '%"+palabra+"%'";
+   sql="call pa_crudprincipalconwhere('"+palabra+"')";
   } 
    
    String []array = new String[11];
@@ -214,7 +213,7 @@ public class crud_libros extends javax.swing.JFrame {
         
         String condicion=jtregistros.getValueAt(filas,0).toString();
         con=conexion_mysql.getConnection();   
-        pst=con.prepareStatement("delete from libros where id_lib='"+condicion+"'");
+        pst=con.prepareStatement("call pa_cruddelete('"+condicion+"')");
         pst.executeUpdate();
         con.close();
         DefaultTableModel dtm = (DefaultTableModel) jtregistros.getModel(); //TableProducto es el nombre de mi tabla ;) 
