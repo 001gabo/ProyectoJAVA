@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,6 +19,7 @@ public class form_add extends javax.swing.JFrame {
         initComponents();
         mostrar();
        setLocationRelativeTo(null);
+       this.getContentPane().setBackground(new Color(26,35,126));
         
     }    
     @SuppressWarnings("unchecked")
@@ -50,8 +52,8 @@ public class form_add extends javax.swing.JFrame {
         combo_editorial = new javax.swing.JComboBox();
         combo_estados = new javax.swing.JComboBox();
         btn_author = new javax.swing.JButton();
-        btn_categorianew = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
+        btn_categorianew = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -68,9 +70,11 @@ public class form_add extends javax.swing.JFrame {
         });
         getContentPane().add(in_anio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 95, -1));
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Descripción");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
 
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("codigo");
         jLabel9.setName("in_anio"); // NOI18N
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
@@ -86,9 +90,11 @@ public class form_add extends javax.swing.JFrame {
         in_cod.setName("in_codigo"); // NOI18N
         getContentPane().add(in_cod, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 92, -1));
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("cantidad");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Observación");
         jLabel11.setName("in_anio"); // NOI18N
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
@@ -96,6 +102,7 @@ public class form_add extends javax.swing.JFrame {
         in_observacion.setName("in_observacion"); // NOI18N
         getContentPane().add(in_observacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 92, -1));
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Autor");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
@@ -110,6 +117,7 @@ public class form_add extends javax.swing.JFrame {
         in_edicion.setName("in_edicion"); // NOI18N
         getContentPane().add(in_edicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 95, -1));
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Edición");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
 
@@ -121,13 +129,16 @@ public class form_add extends javax.swing.JFrame {
         });
         getContentPane().add(in_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 95, -1));
 
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Editorial");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre de libro");
         jLabel2.setToolTipText("");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
 
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Año ");
         jLabel8.setName("in_anio"); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
@@ -146,10 +157,12 @@ public class form_add extends javax.swing.JFrame {
         });
         getContentPane().add(btn_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 360, 20, 20));
 
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Categoria");
         jLabel10.setToolTipText("");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Estado");
         jLabel12.setName("in_anio"); // NOI18N
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, -1, -1));
@@ -173,15 +186,6 @@ public class form_add extends javax.swing.JFrame {
         });
         getContentPane().add(btn_author, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 20, 20));
 
-        btn_categorianew.setBackground(javax.swing.UIManager.getDefaults().getColor("activeCaptionBorder"));
-        btn_categorianew.setBorder(null);
-        btn_categorianew.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_categorianewActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_categorianew, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 20, 20));
-
         cancelar.setText("Cancelar");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,6 +193,13 @@ public class form_add extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 397, 90, -1));
+
+        btn_categorianew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_categorianewActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_categorianew, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 20, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -311,29 +322,6 @@ public class form_add extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void btn_categorianewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_categorianewActionPerformed
-    JFrame frame = new JFrame("Nueva Categoria");
-    try{
-    String categoria = JOptionPane.showInputDialog(frame,"Ingrese una nueva categoria");
-    if(categoria==null){
-    frame.dispose();
-    }else{      
-    con=conexion_mysql.getConnection();   
-    //call pa_addinsertcatego('"+(categoria)+"')
-    
-    pst=con.prepareStatement("call pa_addinsertcatego('"+(categoria)+"')");
-    pst.executeUpdate();
-    con.close();
-    combo_categoria.addItem(categoria);
-        }
-    
-    }
-    catch (Exception ex){
-      JOptionPane.showMessageDialog(null,("error"+ex));
-    }
-   
-    }//GEN-LAST:event_btn_categorianewActionPerformed
-
     private void btn_authorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_authorActionPerformed
     JFrame frame2 = new JFrame("Nuevo Autor");
     try{
@@ -442,6 +430,29 @@ public class form_add extends javax.swing.JFrame {
         
        
     }//GEN-LAST:event_in_anioKeyTyped
+
+    private void btn_categorianewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_categorianewActionPerformed
+            JFrame frame = new JFrame("Nuevo Autor");
+    try{
+    
+    String categoria = JOptionPane.showInputDialog(frame,"Ingrese una nueva categoria");
+    if(categoria==null){
+    frame.dispose();
+    }else{ 
+        //call pa_addinsertautor('"+(categoria)+"')
+        con=conexion_mysql.getConnection();   
+        pst=con.prepareStatement("call pa_addinsertcatego('"+(categoria)+"')");
+       
+        pst.executeUpdate();
+        con.close();
+        combo_categoria.addItem(categoria);
+        }
+    }
+    catch (Exception ex){
+      JOptionPane.showMessageDialog(null,("error"+ex));
+    }
+   
+    }//GEN-LAST:event_btn_categorianewActionPerformed
    
     
     /**

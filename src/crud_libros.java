@@ -49,7 +49,8 @@ public class crud_libros extends javax.swing.JFrame {
    modelo.addColumn("Observacion");
    modelo.addColumn("Codigo");
    jtregistros.setModel(modelo);
-   this.jtregistros.setBackground(new Color(26,35,126));
+   //this.jtregistros.setBackground(new Color(26,35,126));
+
    
    String sql="";
   if(palabra.equals("")){ 
@@ -141,7 +142,6 @@ public class crud_libros extends javax.swing.JFrame {
         getContentPane().add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(633, 22, -1, -1));
         getContentPane().add(in_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 23, 198, -1));
 
-        jtregistros.setForeground(new java.awt.Color(255, 255, 255));
         jtregistros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -155,7 +155,7 @@ public class crud_libros extends javax.swing.JFrame {
         jtregistros.setGridColor(new java.awt.Color(26, 35, 126));
         jScrollPane1.setViewportView(jtregistros);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 57, 708, 407));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 57, 708, 270));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

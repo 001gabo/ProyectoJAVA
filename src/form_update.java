@@ -53,7 +53,7 @@ public class form_update extends javax.swing.JFrame {
         pivote = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(in_desc, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 130, -1));
 
