@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class crud_usuarios extends javax.swing.JFrame {
    
-    
+    modi_usu modificar = new modi_usu();
     public crud_usuarios() {
         initComponents();
         mostrar("");
@@ -35,11 +35,11 @@ public class crud_usuarios extends javax.swing.JFrame {
    jTbl_usu.setModel(modelo);
    String sql="";
   if(palabra.equals("")){ 
-  sql="select id_user, us_rol, us_name, us_lastname, us_pass, us_address, us_number, us_email  from usuario";
+  sql=" CALL PA_SelectUsuario() ";
   
   }
   else{ 
-   sql="select id_user, us_rol, us_name, us_lastname, us_pass, us_address, us_number, us_email  from usuario where id_user  LIKE '%"+palabra+"%' or us_name LIKE '%"+palabra+"%'";
+   sql="CALL PA_BuscarUsu('"+(palabra)+"')"; 
   } 
    
    String []array = new String[8];
@@ -78,13 +78,30 @@ public class crud_usuarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jB_agregar = new javax.swing.JButton();
-        jB_modificar = new javax.swing.JButton();
-        jB_borrar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTbl_usu = new javax.swing.JTable();
         busq_usu = new javax.swing.JTextField();
         jB_busq = new javax.swing.JButton();
+
+        jMenuItem1.setText("Modificar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Eliminar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,10 +111,6 @@ public class crud_usuarios extends javax.swing.JFrame {
                 jB_agregarActionPerformed(evt);
             }
         });
-
-        jB_modificar.setText("Modificar");
-
-        jB_borrar.setText("Borrar");
 
         jTbl_usu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -110,6 +123,7 @@ public class crud_usuarios extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTbl_usu.setComponentPopupMenu(jPopupMenu1);
         jScrollPane1.setViewportView(jTbl_usu);
 
         jB_busq.setText("Buscar");
@@ -129,11 +143,7 @@ public class crud_usuarios extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 664, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jB_agregar)
-                        .addGap(54, 54, 54)
-                        .addComponent(jB_modificar)
-                        .addGap(41, 41, 41)
-                        .addComponent(jB_borrar)
-                        .addGap(33, 33, 33)
+                        .addGap(266, 266, 266)
                         .addComponent(busq_usu, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
                         .addComponent(jB_busq)))
@@ -145,8 +155,6 @@ public class crud_usuarios extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jB_agregar)
-                    .addComponent(jB_modificar)
-                    .addComponent(jB_borrar)
                     .addComponent(busq_usu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jB_busq))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -159,7 +167,7 @@ public class crud_usuarios extends javax.swing.JFrame {
 
     private void jB_busqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_busqActionPerformed
         // TODO add your handling code here:
-        mostrar(jB_busq.getText());
+        mostrar(busq_usu.getText());
     }//GEN-LAST:event_jB_busqActionPerformed
 
     private void jB_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_agregarActionPerformed
@@ -168,6 +176,62 @@ public class crud_usuarios extends javax.swing.JFrame {
       this.setVisible(false);
     }//GEN-LAST:event_jB_agregarActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+       int filas=0;
+       filas= this.jTbl_usu.getSelectedRow();
+       if(filas>=0){
+        modificar.setVisible(true);
+        this.setVisible(false);
+        modi_usu.aux.setText(jTbl_usu.getValueAt(filas,0).toString());
+        modi_usu.jT_email.setText(jTbl_usu.getValueAt(filas,7).toString());
+        modi_usu.jT_num.setText(jTbl_usu.getValueAt(filas,6).toString());
+        modi_usu.jT_address.setText(jTbl_usu.getValueAt(filas,5).toString());
+       }
+        else{
+        JOptionPane.showMessageDialog(null,"Seleccionar registro a modificar");
+       }
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    public void confirm(crud_usuarios confirm, int filas, String condicion){
+        try{
+            Connection con_usu = DriverManager.getConnection("jdbc:mysql://localhost:3307/biblioteca","root","");
+            PreparedStatement pst_usu = con_usu.prepareStatement("CALL PA_DeleteUsu('"+condicion+"')");
+        pst_usu.executeUpdate();
+        con_usu.close();
+        DefaultTableModel dtm = (DefaultTableModel) jTbl_usu.getModel(); //TableProducto es el nombre de mi tabla ;) 
+        dtm.removeRow(filas);
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null,"Error en: "+ex);
+        }
+        
+    }
+    
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        
+        
+        int filas= jTbl_usu.getSelectedRow();
+      try{
+      if(filas>=0){
+        
+        String condicion=jTbl_usu.getValueAt(filas,0).toString();
+        
+        new confirm_usu(this,filas,condicion).setVisible(true);
+   
+       }
+       else{
+        JOptionPane.showMessageDialog(null,"Seleccionar registro a eliminar");
+       }
+      }
+      catch(Exception ex){
+       JOptionPane.showMessageDialog(null,"Error en: "+ex);
+      }
+      
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -206,10 +270,11 @@ public class crud_usuarios extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField busq_usu;
     private javax.swing.JButton jB_agregar;
-    private javax.swing.JButton jB_borrar;
     private javax.swing.JButton jB_busq;
-    private javax.swing.JButton jB_modificar;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTbl_usu;
+    public static javax.swing.JTable jTbl_usu;
     // End of variables declaration//GEN-END:variables
 }
