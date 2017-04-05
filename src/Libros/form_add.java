@@ -1,4 +1,6 @@
-
+package Libros;
+import conexion.*;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +19,8 @@ public class form_add extends javax.swing.JFrame {
     public form_add() {
         initComponents();
         mostrar();
-        setLocationRelativeTo(null);
+       setLocationRelativeTo(null);
+       this.getContentPane().setBackground(new Color(26,35,126));
         
     }    
     @SuppressWarnings("unchecked")
@@ -50,8 +53,8 @@ public class form_add extends javax.swing.JFrame {
         combo_editorial = new javax.swing.JComboBox();
         combo_estados = new javax.swing.JComboBox();
         btn_author = new javax.swing.JButton();
-        btn_categorianew = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
+        btn_categorianew = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -68,9 +71,11 @@ public class form_add extends javax.swing.JFrame {
         });
         getContentPane().add(in_anio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 95, -1));
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Descripción");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
 
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("codigo");
         jLabel9.setName("in_anio"); // NOI18N
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
@@ -86,9 +91,11 @@ public class form_add extends javax.swing.JFrame {
         in_cod.setName("in_codigo"); // NOI18N
         getContentPane().add(in_cod, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 92, -1));
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("cantidad");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Observación");
         jLabel11.setName("in_anio"); // NOI18N
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
@@ -96,6 +103,7 @@ public class form_add extends javax.swing.JFrame {
         in_observacion.setName("in_observacion"); // NOI18N
         getContentPane().add(in_observacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 92, -1));
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Autor");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
@@ -110,6 +118,7 @@ public class form_add extends javax.swing.JFrame {
         in_edicion.setName("in_edicion"); // NOI18N
         getContentPane().add(in_edicion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 95, -1));
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Edición");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
 
@@ -121,13 +130,16 @@ public class form_add extends javax.swing.JFrame {
         });
         getContentPane().add(in_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 95, -1));
 
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Editorial");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre de libro");
         jLabel2.setToolTipText("");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
 
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Año ");
         jLabel8.setName("in_anio"); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
@@ -146,10 +158,12 @@ public class form_add extends javax.swing.JFrame {
         });
         getContentPane().add(btn_estado, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 360, 20, 20));
 
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Categoria");
         jLabel10.setToolTipText("");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Estado");
         jLabel12.setName("in_anio"); // NOI18N
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, -1, -1));
@@ -173,15 +187,6 @@ public class form_add extends javax.swing.JFrame {
         });
         getContentPane().add(btn_author, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 20, 20));
 
-        btn_categorianew.setBackground(javax.swing.UIManager.getDefaults().getColor("activeCaptionBorder"));
-        btn_categorianew.setBorder(null);
-        btn_categorianew.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_categorianewActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_categorianew, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 20, 20));
-
         cancelar.setText("Cancelar");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,6 +194,13 @@ public class form_add extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 397, 90, -1));
+
+        btn_categorianew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_categorianewActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_categorianew, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 20, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -206,30 +218,31 @@ public class form_add extends javax.swing.JFrame {
                
 //      combo_box Categoria          
            con=conexion_mysql.getConnection();
-           s= con.createStatement();         
-           rs=s.executeQuery("select cat_categorias from categoria");
+           s= con.createStatement();  
+           rs=s.executeQuery("call pa_addselectcategoria");
            while(rs.next())
             { 
             this.combo_categoria.addItem(rs.getString(1));
             
             }
  //        combo_box Autor
-           rs=s.executeQuery("select aut_name from autor");
+            
+           rs=s.executeQuery("call pa_addselectauthort");
            while(rs.next())
             { 
             combo_author.addItem(rs.getString(1));
             }       
 //       Combo_box editorial
                   
-           rs=s.executeQuery("select ed_name from editoriales");
+           rs=s.executeQuery("call pa_addselectedit");
            while(rs.next())
             { 
             this.combo_editorial.addItem(rs.getString(1));
            
             }  
  //        combo_box estados
-          
-           rs=s.executeQuery("select es_estados from estados");
+   
+           rs=s.executeQuery("call pa_addselectestadost");
            while(rs.next())
             { 
             this.combo_estados.addItem(rs.getString(1));
@@ -249,56 +262,48 @@ public class form_add extends javax.swing.JFrame {
           con=conexion_mysql.getConnection();
           s= con.createStatement();
           
-          //          encontrando el id de la tabla categora 
+          //          encontrando el id de la tabla categora 	pa_addselectcatego
           int id_categoria=0;
-          rs=s.executeQuery("select id_categoria from categoria where cat_categorias='"+(combo_categoria.getSelectedItem().toString())+"'");
+          //	pa_addselectcatego
+          rs=s.executeQuery("call pa_addselectcatego('"+(combo_categoria.getSelectedItem().toString())+"')");
           while(rs.next())
             { 
             id_categoria=rs.getInt(1);
             }
-          
+          System.out.print(id_categoria);
      //     encontrando el id de la tabla autor 
 //          String pivote=combo_author.getSelectedItem().toString();
 //          int valor=pivote.indexOf(" "); 
 //          String nombre=pivote.substring(0,valor); 
           int id_autor=0;  //encontrando el id de la tabla autor 
-          
-          rs=s.executeQuery("select id_autor from autor where aut_name='"+(combo_author.getSelectedItem().toString())+"'");
+  
+          rs=s.executeQuery("call pa_addselectauthor('"+(combo_author.getSelectedItem().toString())+"')");
           while(rs.next())
             { 
             id_autor=rs.getInt(1);
             }
-
-         int id_editorial=0;//encontrando el id de la editorial
-          rs=s.executeQuery("select id_editorial from editoriales where ed_name='"+(combo_editorial.getSelectedItem().toString())+"'");
+         System.out.print(id_autor);
+         int id_editorial=0;//encontrando el id de la editorial 
+          rs=s.executeQuery("call pa_addselecteditorial('"+(combo_editorial.getSelectedItem().toString())+"')");
           while(rs.next())
             { 
             id_editorial=rs.getInt(1);
             }
-           
+          System.out.print( id_editorial);
          int id_estado=0;  // encontrando el id del estado 
-          rs=s.executeQuery("select id_estados from estados where es_estados='"+(combo_estados.getSelectedItem().toString())+"'");
+          rs=s.executeQuery("call pa_addselectestados('"+(combo_estados.getSelectedItem().toString())+"')");
           while(rs.next())
             { 
             id_estado=rs.getInt(1);
             } 
-            
+            System.out.print( id_estado);
    // Ahora haremos el insert principal
         if(in_cod.getText().matches("[A-Z]{2}+[/-]{1}+[0-9]{2}+[/-]{1}+[0-9]{1}")) {
         
-        pst=con.prepareStatement("insert into libros(lib_descrip, lib_name, lib_cantidad, lib_categoria, lib_autor, lib_edicion,lib_editorial,lib_year,lib_codigo,lib_observacion,lib_estado) values(?,?,?,?,?,?,?,?,?,?,?)");      
-        pst.setString(1,in_desc.getText());
-        pst.setString(2,in_name.getText());
-        pst.setInt(3,Integer.parseInt(in_cantidad.getText()));
-        pst.setInt(4,id_categoria);
-        pst.setInt(5,id_autor);
-        pst.setString(6,in_edicion.getText());
-        pst.setInt(7,id_editorial);
-        pst.setInt(8,Integer.parseInt(in_anio.getText()));
-        pst.setString(9,in_cod.getText());
-        pst.setString(10,in_observacion.getText());
-        pst.setInt(11,id_estado);
-        
+         pst=con.prepareStatement("call pa_addglobal('"+(in_desc.getText())+"','"+(in_name.getText())+"',"+(Integer.parseInt(in_cantidad.getText()))+","+(id_categoria)+","+(id_autor)+",'"+(in_edicion.getText())+"',"+(id_editorial)+","+(Integer.parseInt(in_anio.getText()))+",'"+(in_cod.getText())+"','"+(in_observacion.getText())+"',"+(id_estado)+")");      
+      
+//      String query="'"+(in_desc.getText())+"','"+(in_name.getText())+"',"+(Integer.parseInt(in_cantidad.getText()))+","+(id_categoria)+","+(id_autor)+",'"+(in_edicion.getText())+"',"+(id_editorial)+","+(Integer.parseInt(in_anio.getText()))+",'"+(in_cod.getText())+"','"+(in_observacion.getText())+"',"+(id_estado)+"";
+//      System.out.print(""+query);
         pst.executeUpdate();
         con.close();
         open =new crud_libros();
@@ -318,32 +323,6 @@ public class form_add extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void btn_categorianewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_categorianewActionPerformed
-    JFrame frame = new JFrame("Nueva Categoria");
-    try{
-    String categoria = JOptionPane.showInputDialog(frame,"Ingrese una nueva categoria");
-    if(categoria==null){
-    frame.dispose();
-    }else{      
-    con=conexion_mysql.getConnection();   
-    pst=con.prepareStatement("insert into categoria(cat_categorias) values(?)");
-    pst.setString(1,categoria);
-    pst.executeUpdate();
-    con.close();
-    combo_categoria.addItem(categoria);
-    
-     JOptionPane.showMessageDialog(null, "El campo codigo esta mal, digitar de la siguiente manera ej: IM-01-1 donde IM es el tipo de estante,01 el número de estante y 1 es el nivel.");
-    
-    }
-    
-    }
-    catch (Exception ex){
-      JOptionPane.showMessageDialog(null,("error"+ex));
-    }
-   
-    
-    }//GEN-LAST:event_btn_categorianewActionPerformed
-
     private void btn_authorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_authorActionPerformed
     JFrame frame2 = new JFrame("Nuevo Autor");
     try{
@@ -351,14 +330,14 @@ public class form_add extends javax.swing.JFrame {
     String name = JOptionPane.showInputDialog(frame2,"Ingrese un nombre y un apellido del autor a registrar");
     if(name==null){
     frame2.dispose();
-    }else{      
+    }else{ 
+        //call pa_addinsertautor('"+(categoria)+"')
         con=conexion_mysql.getConnection();   
-        pst=con.prepareStatement("insert into autor(aut_name) values(?)");
-        pst.setString(1,name);
+        pst=con.prepareStatement("call pa_addinsertautor('"+(name)+"')");
+       
         pst.executeUpdate();
         con.close();
         combo_author.addItem(name);
-        
         }
     }
     catch (Exception ex){
@@ -374,10 +353,10 @@ public class form_add extends javax.swing.JFrame {
     String edit = JOptionPane.showInputDialog(frame3,"Ingrese una editorial");
     if(edit==null){
     frame3.dispose();
-    }else{      
+    }else{ 
+        //call pa_addinserteditorial('"+(name)+"')
         con=conexion_mysql.getConnection();   
-        pst=con.prepareStatement("insert into editoriales(ed_name) values(?)");
-        pst.setString(1,edit);
+        pst=con.prepareStatement("call pa_addinserteditorial('"+(edit)+"')");
         pst.executeUpdate();
         con.close();
         combo_editorial.addItem(edit);
@@ -399,10 +378,10 @@ public class form_add extends javax.swing.JFrame {
     String state = JOptionPane.showInputDialog(frame4,"Ingrese un nuevo estado del libro");
     if(state==null){
     frame4.dispose();
-    }else{      
+    }else{     
+        
         con=conexion_mysql.getConnection();   
-        pst=con.prepareStatement("insert into estados(es_estados) values(?)");
-        pst.setString(1,state);
+        pst=con.prepareStatement("call pa_addinsertestado('"+(state)+"')");
         pst.executeUpdate();
         con.close();
         combo_estados.addItem(state);
@@ -452,6 +431,29 @@ public class form_add extends javax.swing.JFrame {
         
        
     }//GEN-LAST:event_in_anioKeyTyped
+
+    private void btn_categorianewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_categorianewActionPerformed
+            JFrame frame = new JFrame("Nuevo Autor");
+    try{
+    
+    String categoria = JOptionPane.showInputDialog(frame,"Ingrese una nueva categoria");
+    if(categoria==null){
+    frame.dispose();
+    }else{ 
+        //call pa_addinsertautor('"+(categoria)+"')
+        con=conexion_mysql.getConnection();   
+        pst=con.prepareStatement("call pa_addinsertcatego('"+(categoria)+"')");
+       
+        pst.executeUpdate();
+        con.close();
+        combo_categoria.addItem(categoria);
+        }
+    }
+    catch (Exception ex){
+      JOptionPane.showMessageDialog(null,("error"+ex));
+    }
+   
+    }//GEN-LAST:event_btn_categorianewActionPerformed
    
     
     /**

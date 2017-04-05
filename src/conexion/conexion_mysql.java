@@ -1,3 +1,5 @@
+package conexion;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,7 +21,7 @@ public class conexion_mysql {
     private static Connection con;
     private static final String driver ="com.mysql.jdbc.Driver";
     private static final String user="root";
-    private static final String pass="nVC3XJt2nmyF5Lxx";
+    private static final String pass="";
     private static final String url="jdbc:mysql://localhost:3306/biblioteca";
      
     public static Connection getConnection(){

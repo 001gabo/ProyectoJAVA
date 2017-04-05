@@ -5,6 +5,7 @@
  */
 package usuario;
 
+import java.awt.Color;
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,6 +27,7 @@ public class Agregar_usu extends javax.swing.JFrame {
     public Agregar_usu() {
         initComponents();
         mostrar();
+        this.getContentPane().setBackground(new Color (26,35,126));
     }
 
     /**
@@ -54,23 +56,32 @@ public class Agregar_usu extends javax.swing.JFrame {
         jT_usunum = new javax.swing.JTextField();
         jT_usue = new javax.swing.JTextField();
         jB_agregar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText(" ID Usuario");
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Rol");
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Nombre");
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Apellido");
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Contraseña");
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Direccion");
 
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Número");
 
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Email");
 
         Combo_rol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -82,12 +93,19 @@ public class Agregar_usu extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Cancelar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -110,9 +128,11 @@ public class Agregar_usu extends javax.swing.JFrame {
                             .addComponent(jT_usunum)
                             .addComponent(jT_usue)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(155, 155, 155)
-                        .addComponent(jB_agregar)))
-                .addContainerGap(156, Short.MAX_VALUE))
+                        .addGap(104, 104, 104)
+                        .addComponent(jB_agregar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addComponent(jButton1)))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,40 +169,39 @@ public class Agregar_usu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jT_usue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jB_agregar)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jB_agregar)
+                    .addComponent(jButton1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(353, 398));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jB_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_agregarActionPerformed
         // TODO add your handling code here:
         try{
             int id_rol=0;
-            Connection con_usu = DriverManager.getConnection("jdbc:mysql://localhost:3307/biblioteca","root","");
+            Connection con_usu = DriverManager.getConnection("jdbc:mysql://localhost:3306/biblioteca","root","");
             Statement st_usu = con_usu.createStatement();
-            ResultSet rs_usu = st_usu.executeQuery("select id_rol from roles where rol_tipo='"+(Combo_rol.getSelectedItem().toString())+"'");
+            ResultSet rs_usu = st_usu.executeQuery("CALL PA_selectRol('"+(Combo_rol.getSelectedItem().toString())+"')");
             while(rs_usu.next())
             { 
             id_rol=rs_usu.getInt(1);
             }
-            
-            PreparedStatement pst_usu = con_usu.prepareStatement("insert into usuario (id_user, us_rol, us_name, us_lastname, us_pass, us_address, us_number, us_email) values(?,?,?,?,?,?,?,?)");
-            pst_usu.setString(1,jT_idusu.getText());
-            pst_usu.setInt(2, id_rol);
-            pst_usu.setString(3,jT_usuname.getText());
-            pst_usu.setString(4,jT_usuLname.getText());
-            pst_usu.setString(5,jT_usupass.getText());
-            pst_usu.setString(6,jT_usuadd.getText());
-            pst_usu.setInt(7,Integer.parseInt(jT_usunum.getText()));
-            pst_usu.setString(8,jT_usue.getText());
+            if(jT_idusu.getText().matches("[A-Z]{2}+[0-9]{6}")){
+            PreparedStatement pst_usu = con_usu.prepareStatement(" CALL PA_Usuario('"+(jT_idusu.getText())+"','"+(id_rol)+"','"+(jT_usuname.getText())+"','"+(jT_usuLname.getText())+"','"+(jT_usupass.getText())+"','"+(jT_usuadd.getText())+"','"+(Integer.parseInt(jT_usunum.getText()))+"','"+(jT_usue.getText())+"')");
             pst_usu.executeUpdate();
             con_usu.close();
             open= new crud_usuarios();
             open.setVisible(true);
             this.setVisible(false);
+            }
+            else{
+                JOptionPane.showMessageDialog(null,("Ingrese un formato de usuario correcto.   Ejemplo: HS110065"));
+            }
             
         }
         catch(Exception e)
@@ -191,13 +210,20 @@ public class Agregar_usu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jB_agregarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        open = new crud_usuarios();
+        open.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void mostrar()
     {
         Combo_rol.removeAllItems();
         try{
-            Connection con_usu = DriverManager.getConnection("jdbc:mysql://localhost:3307/biblioteca","root","");
+            Connection con_usu = DriverManager.getConnection("jdbc:mysql://localhost:3306/biblioteca","root","");
             Statement st_usu = con_usu.createStatement();
-            ResultSet rs_usu = st_usu.executeQuery("select rol_tipo from roles");
+            ResultSet rs_usu = st_usu.executeQuery("CALL PA_selectRoles");
             while(rs_usu.next())
             { 
             this.Combo_rol.addItem(rs_usu.getString(1));
@@ -248,6 +274,7 @@ public class Agregar_usu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Combo_rol;
     private javax.swing.JButton jB_agregar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
